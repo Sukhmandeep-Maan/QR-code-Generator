@@ -13,5 +13,5 @@ def home(request):
 
     else:
         pass
-    return render(request, "home.html", {'data': data})
+    return render(request, "index.html", {'data': data})
 
