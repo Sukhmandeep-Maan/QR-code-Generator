@@ -23,7 +23,7 @@ SECRET_KEY = 'm8+r-o7hb9tt#84_^-lf48!qu3n5a!c!s$gxvs*t)@r^q@o^a@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1','qrcodegenererator2000.herokuapp.com']
 
 
 # Application definition
