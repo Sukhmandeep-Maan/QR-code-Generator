@@ -24,6 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('send', views.home),
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
 
