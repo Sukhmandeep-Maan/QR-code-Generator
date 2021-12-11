@@ -1,30 +1,119 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CSS/home.css' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="{% static 'CSS/home.css' %}" /> -->
 
     <title>Qr Code Generator</title>
-</head>
-<body>
-    <div id="Main_Div">
+
+    <style>
+      body {
+        background-color: white;
+        font-family: sans-serif;
+      }
+
+      .wrapper {
+        background-color: #eee;
+        display: flex;
+        flex-direction: column;
+        border: 3px solid #111;
+        border-radius: 15px;
+        box-shadow: 11px 11px 18px -2px rgba(0, 0, 0, 0.22);
+        -webkit-box-shadow: 11px 11px 18px -2px rgba(0, 0, 0, 0.22);
+        -moz-box-shadow: 11px 11px 18px -2px rgba(0, 0, 0, 0.22);
+        margin-left: 2vmin;
+        margin-right: 2vmin;
+      }
+      #h1 {
+        color: #eee;
+        margin: 0;
+        font-size: 1.6rem;
+        margin-top: 20px;
+      }
+
+      #Main_Div {
+        background-color: #111;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      #Main_Div form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #Entry {
+        width: 50%;
+        height: 25px;
+        font-size: large;
+        font-weight: bolder;
+        margin: 15px;
+      }
+
+      #btn {
+        margin-bottom: 25px;
+        background: white;
+        width: 30%;
+        padding: 10px 15px;
+        border-radius: 10px;
+        background-color: rgb(255, 217, 0);
+        border: none;
+      }
+
+      #ans_div {
+        background-color: #eee;
+        position: relative;
+        top: -10px;
+        z-index: 12;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding: 10px;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+
+      #QR {
+        background-color: #eee;
+        position: relative;
+        top: -10px;
+        z-index: 12;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="Main_Div">
         <form action="/send" method="post">
-            {% csrf_token %}
-            <h1 id="h1">Enter Some Data <input type="text" name="data" id="Entry"></h1>
-            <input type="submit" value="Generate QR Code" id="btn">
+          {% csrf_token %}
+          <h1 id="h1">Enter some data</h1>
+          <input type="text" name="data" id="Entry" />
+          <input type="submit" value="Generate QR Code" id="btn" />
         </form>
+      </div>
+      {% if data %}
+      <div id="QR">
+        <h2>Your Qr Code is:</h2>
+        <img src="{% static 'image/test.png' %}" alt="No Image" />
+      </div>
+      {% else %}
+      <div id="ans_div">
+        <p>
+          Please Enter Useful data into datafield to generate some data related
+          Qr Code
+        </p>
+      </div>
+
+      {% endif %}
     </div>
-    <div id="ans_div">
-        <h1 id="ans_had">Your Qr Code is: </h1>
-    </div>
-    <div id="QR">
-        {% if data %}
-            <img src="{% static 'image/test.png' %}" alt="No Image">
-        {% else %}
-            <h1>Please Enter Usefull data into datafield to generate some data related Qr Code</h1>
-        {% endif %}
-    </div>
-</body>
+  </body>
 </html>
