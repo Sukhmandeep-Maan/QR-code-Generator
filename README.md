@@ -1,5 +1,5 @@
 # QR-code-Generator
-Tools:
--Django
--HTML
+Tools:<br/>
+-Django<br/>
+-HTML<br/>
 -CSS
